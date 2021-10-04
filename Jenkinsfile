@@ -7,7 +7,7 @@ pipeline {
         stage('Setup') {
             steps {
                 echo 'Cloning the repo...'
-			    git 'https://github.com/AyanGhatak/learn-jenkins-nodejs.git'
+			    			git 'https://github.com/AyanGhatak/learn-jenkins-nodejs.git'
             }
         }
         stage('Build') {
