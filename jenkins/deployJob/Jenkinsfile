@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Setup') {
+            steps {
+                echo 'Cloning the repo...'
+    			git 'https://github.com/AyanGhatak/learn-jenkins-nodejs.git'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                script {
+                    if (params.deployment == 'production') {
+                        echo 'Deploying the changes on production'
+                        sh './script/prod_deploy'
+                    } else {
+                        echo 'Deploying the changes on staging'
+                        sh './script/deploy'
+                    }
+                }
+            }
+        }
+    }
+}
